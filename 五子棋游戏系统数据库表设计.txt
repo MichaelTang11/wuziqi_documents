@@ -1,0 +1,35 @@
+数据库设计
+1、user（基础信息表）
+    user_id	        int	11	        用户ID              主键        自增           
+    username	    varchar	14	    用户名
+    code	        varchar	40	    加密后的密码
+    email	        varchar	255	    电子邮箱	
+    identity	    int	1	        身份标识默认为0
+    login_state 	int	1           登录状态默认为0
+    state           int	1           状态分为0:离线、1:在线、3:游戏中，默认为0
+2、user_info（详细信息表）
+    user_id         int	11	        用户ID              主键
+    avatar          varchar	255     用户头像路径，默认为assets/images/avatars/avatar2.png
+    sex             int	1           性别，0为男，1为女
+    game_time       int	11          游戏次数，默认为0
+    win_time        int 11          胜利次数，默认为0
+    qq              varchar20       qq号
+    birthday        varchar20       生日
+    register_date   varchar20       注册日期
+    last_login_date varchar20       最后一次登录日期
+    if_first_login  int 1           是否为第一次登录，默认为1  
+3、friend_info(好友表)    
+    user_id         int	11	        用户ID 
+    friend_id       int 11          好友ID
+    note            varchar	16      备注，默认为空字符串
+    group_id        int 11          分组ID
+    opr_id          int 11          操作ID，同一次操作的ID相同
+4、group_info（分组信息表）
+    group_id        int 11          分组ID              主键        自增
+    user_id         int	11	        用户ID
+    group_name      varchar	16      分组名
+5、game_table_info(游戏座位信息表)
+    table_id        int 3           桌号
+    left_player_id  int 11          座位左边的玩家ID
+    right_player_id int 11          座位右边的玩家ID
+    game_state      int 1           游戏状态，0:未开始，1:已开始

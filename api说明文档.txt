@@ -1,0 +1,62 @@
+备注：出参均为json字段
+
+1、"www.michaeltang/wuziqi/"
+    请求方式：
+        GET
+    参数：
+        无
+    出参：
+        无
+    功能：
+        路由重定向，若存在用户cookies则跳转至Home.html,不存在则跳转至Login.html
+
+2、"www.michaeltang/wuziqi/DoCheckLoginStatus"
+    请求方式：
+        POST
+    参数：
+        无
+    出参：
+        key:status,value:'True|False'(True为已登录，False为未登录)
+    功能：
+        判断用户是否登录
+
+3、
+
+
+"www.michaeltang/wuziqi/DoGetInitData"
+    请求方式:
+        GET
+    参数:
+        无
+    出参：
+       {
+            "userData": {
+                "username": "1514030106",
+                "ifFirstLogin":1
+            },
+            "friendData": {
+                "我的好友": [
+                    {
+                        "friendId": 4,
+                        "avatar": "assets/images/avatars/avatar2.png",
+                        "friendUsername": "1514030102",
+                        "note": "",
+                        "loginState": 0,
+                        "state": 0
+                    },
+                    {
+                        "friendId": 3,
+                        "avatar": "assets/images/avatars/avatar2.png",
+                        "friendUsername": "1514030101",
+                        "note": "",
+                        "loginState": 0,
+                        "state": 0
+                    }
+                ]
+            },
+            "gameTableData": "",
+            "infoData": "",
+            "messageData": ""
+        }
+    功能:
+        获取系统初始化信息
