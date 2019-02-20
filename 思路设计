@@ -1,0 +1,20 @@
+function loadDialogWidget(){
+    if(InitData["messageData"]["messageFriendList"].length==0){
+        //产生一个全局判断变量，用于在点开消息时判断
+        //如果全局判断变量为True则弹出提示框(请通过左边好友列表发起消息)，若为False则展示消息
+        //预计会在InitData中加入变量保存最新消息数量
+    }else{
+        //根据InitData中的新消息数量更新提示泡中的数字，若为0则不显示提示泡
+        //根据InitData中的messageFriendList中的内容更新dialog-user-list
+    }
+}
+
+//前端编写信息插入函数
+function insertMessage(insertType,Content){
+    //insertType:0(timeStamp) 1(to-me) 2(to-other)
+    
+}
+
+数据库user_info中添加字段new_message_number
+
+
