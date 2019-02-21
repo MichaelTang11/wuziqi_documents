@@ -33,3 +33,21 @@
     left_player_id  int 11          座位左边的玩家ID
     right_player_id int 11          座位右边的玩家ID
     game_state      int 1           游戏状态，0:未开始，1:已开始
+
+6、game_notification(游戏通知表)
+    id              int 11          自增主键
+    from_id         int 11          消息来源
+    to_id           int 11          接收方
+    type            int 1           通知类型 0:好友申请
+
+7、message_friend_list(消息列表左边好友列表)
+    id              int 11          自增主键
+    user_id         int 11          列表拥有者
+    friend_id       int 11          好友id
+
+8、message_info(消息表)
+    from_id         int 11          消息来源
+    to_id           int 11          接收方
+    content         varchar 255     内容
+    update_time     datetime        插入时间
+    

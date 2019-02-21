@@ -11,7 +11,7 @@
 9、UI设计中技术难点：
     各菜单栏位置获取，显示隐藏
     侧边导航栏使用ace_scroll实现滚动条效果
-    使用jqueryUi中的menu以及js代码实现点击弹出菜单的效果
+    使用jqueryUi中的menu（jquery ui 的menu不支持动态元素更新）以及js代码实现点击弹出菜单的效果
     模仿qq游戏大厅ui设计
     js批量生成html代码
     对话框滚动条初始在底部使用slimScroll
@@ -27,8 +27,10 @@
     mysql假死问题
     安装Python3 并不与本地的Python2发生冲突
     维持进程后台常驻
-    Nginx 安装配置（动静资源分离，路由配置，多项目共存）
+    Nginx 安装配置（动静资源分离，路由配置,正则表达式，多项目共存，WebSocket配置）
+    
 11、使用参数化sql查询防止sql注入
 12、返回json数据中文字符串乱码
 13、json字符串key值若包含数字，js会自动将数字进行排序，所以组名不能以数字开头
 14、获取iframe框中的表单值
+15、Navicat 连接远程数据库

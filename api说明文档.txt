@@ -1,6 +1,6 @@
 备注：出参均为json字段
 
-1、"www.michaeltang/wuziqi/"
+"www.michaeltang/wuziqi/"
     请求方式：
         GET
     参数：
@@ -10,7 +10,9 @@
     功能：
         路由重定向，若存在用户cookies则跳转至Home.html,不存在则跳转至Login.html
 
-2、"www.michaeltang/wuziqi/DoCheckLoginStatus"
+登陆页面接口
+
+"www.michaeltang/wuziqi/CheckLoginStatus"
     请求方式：
         POST
     参数：
@@ -20,10 +22,80 @@
     功能：
         判断用户是否登录
 
-3、
+"www.michaeltang/wuziqi/Login"
+    请求方式：
+        POST
+    参数：
+        无
+    出参：
+        key:status,value:'True|False'(True为可登录，False为出错)
+    功能：
+        判断用户是否可登录
+
+"www.michaeltang/wuziqi/SignIn"
+    请求方式：
+        POST
+    参数：
+        无
+    出参：
+        key:status,value:'00|01'(00为成功，01为用户名重复)
+    功能：
+        判断是否注册成功
+
+"www.michaeltang/wuziqi/CheckUser"
+    请求方式：
+        POST
+    参数：
+        username
+    出参：
+        key:status,value:'00|01'(00为查询成功，01为无此用户名)
+    功能：
+        用户名查询接口
+
+"www.michaeltang/wuziqi/SendCode"
+    请求方式：
+        POST
+    参数：
+        无
+    出参：
+        key:status,value:'00'(00为发送成功)
+    功能：
+        重置密码验证码发送
+
+"www.michaeltang/wuziqi/CheckCode"
+    请求方式：
+        POST
+    参数：
+        username,code
+    出参：
+        {"status": "00"}(00为校验成功,01W为校验失败)
+    功能：
+        校验验证码
+
+"www.michaeltang/wuziqi/ResetPassword"
+    请求方式：
+        POST
+    参数：
+        username,code
+    出参：
+        无
+    功能：
+        重置密码
+
+Home页面接口
+
+"www.michaeltang/wuziqi/Logout"
+    请求方式：
+        POST
+    参数：
+        无
+    出参：
+        无
+    功能：
+        清除cookie并跳转至登陆页面
 
 
-"www.michaeltang/wuziqi/DoGetInitData"
+"www.michaeltang/wuziqi/GetInitData"
     请求方式:
         GET
     参数:
@@ -32,6 +104,7 @@
        {
             "userData": {
                 "username": "1514030106",
+                "avatar":"assets/images/avatars/avatar2.png",
                 "ifFirstLogin":1
             },
             "friendData": {
@@ -60,3 +133,132 @@
         }
     功能:
         获取系统初始化信息
+
+"www.michaeltang/wuziqi/AddGroup"
+     请求方式:
+        POST
+    参数:
+        groupName
+    出参：
+       {'status':00} (00:成功)
+    功能:
+        添加分组
+
+
+"www.michaeltang/wuziqi/MoveToGroup"
+     请求方式:
+        POST
+    参数:
+        friendId,groupName
+    出参：
+       {'status':00} 00:成功 
+    功能:
+        移动好友至分组
+
+"www.michaeltang/wuziqi/ModifyNote"
+     请求方式:
+        POST
+    参数:
+        friendId,groupName
+    出参：
+       {'status':00} 00:成功 
+    功能:
+        移动好友至分组
+
+"www.michaeltang/wuziqi/ModifyGroupName"
+     请求方式:
+        POST
+    参数:
+        oldGroupName,newGroupName
+    出参：
+        {"status":"00"} 00:成功 
+    功能:
+        修改分组名称
+
+"www.michaeltang/wuziqi/DeleteGroup"
+     请求方式:
+        POST
+    参数:
+        groupName
+    出参：
+        {"status":"00"} 00:成功 
+    功能:
+        删除分组
+
+"www.michaeltang/wuziqi/ModifyUserInfo"
+     请求方式:
+        POST
+    参数:
+        birthday,sex,email,qq
+    出参：
+        无
+    功能:
+        修改用户信息
+
+"www.michaeltang/wuziqi/ModifyUserAvatar"
+     请求方式:
+        POST
+    参数:
+        avatar
+    出参：
+        无
+    功能:
+        修改用户头像
+
+"www.michaeltang/wuziqi/AddFriend"
+     请求方式:
+        POST
+    参数:
+        username
+    出参：
+       {'status':00|01|03} 00:成功 01：用户不存在 02:该用户已为您的好友 03：好友请求已存在请求列表中
+    功能:
+        向好友发出添加好友请求
+
+"www.michaeltang/wuziqi/AgreeAddFriend"
+     请求方式:
+        POST
+    参数:
+        fromId
+    出参：
+       {'status':00} 00:成功
+    功能:
+        同意好友请求
+
+"www.michaeltang/wuziqi/DenyAddFriend"
+     请求方式:
+        POST
+    参数:
+        fromId
+    出参：
+       {'status':00} 00:成功
+    功能:
+        拒绝好友请求
+
+"www.michaeltang/wuziqi/DeleteFriend"
+     请求方式:
+        POST
+    参数:
+        friendId
+    出参：
+       {'status':00} 00:成功
+    功能:
+        删除好友
+
+"www.michaeltang/wuziqi/SitDown"
+     请求方式:
+        POST
+    参数:
+        position,tableId
+    出参：
+       {'status':00} 00:成功
+    功能:
+        大厅中坐下，并新建GameRoom页面
+
+"www.michaeltang/wuziqi/HomeWebSocket"
+socket通信后端通知前端代码详解
+    1、01：刷新好友列表
+    2、02：刷新提示框
+    3、03：刷新消息列表
+    4、04：刷新大厅桌面
+
