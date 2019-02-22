@@ -30,7 +30,7 @@
     出参：
         key:status,value:'True|False'(True为可登录，False为出错)
     功能：
-        判断用户是否可登录
+        用户登录
 
 "www.michaeltang/wuziqi/SignIn"
     请求方式：
@@ -262,3 +262,50 @@ socket通信后端通知前端代码详解
     3、03：刷新消息列表
     4、04：刷新大厅桌面
 
+ProfilePage中的接口
+
+"www.michaeltang/wuziqi/GetUserProfile"
+     请求方式:
+        POST
+    参数:
+        username
+    出参：
+        {
+            "userProfile": {
+                "username": "",
+                "avatar": "",
+                "sex": "",
+                "birthday": "",
+                "qq": "",
+                "registerDate": "",
+                "lastLoginDate": "",
+                "gameTime": "",
+                "winTime": ""
+            }
+        }
+    功能:
+        获取用户的个人信息
+
+SettingPage中的接口
+
+"www.michaeltang/wuziqi/GetUserInfo"
+     请求方式:
+        POST
+    参数:
+        username
+    出参：
+        {
+            "userInfo": {
+                "username": "",
+                "avatar": "",
+                "sex": "",
+                "birthday": "",
+                "qq": "",
+                "registerDate": "",
+                "lastLoginDate": "",
+                "gameTime": "",
+                "winTime": ""
+            }
+        }
+    功能:
+        获取用户的个人信息
