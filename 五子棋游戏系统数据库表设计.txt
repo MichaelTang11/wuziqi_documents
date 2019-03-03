@@ -44,6 +44,8 @@
     id              int 11          自增主键
     user_id         int 11          列表拥有者
     friend_id       int 11          好友id
+    active_state    tinyInt         激活状态    
+    message_number  int             新消息数
 
 8、message_info(消息表)
     from_id         int 11          消息来源
@@ -51,3 +53,8 @@
     content         varchar 255     内容
     update_time     datetime        插入时间
     
+9、user_(userId)_message(用户消息视图，userId为可变项，在用户注册同时同步创建视图)
+    related_user
+    content
+    update_time
+    type                            1为对方发送给我方，0为我方发送给对方

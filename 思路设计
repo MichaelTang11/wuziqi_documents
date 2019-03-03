@@ -17,4 +17,21 @@ function insertMessage(insertType,Content){
 
 数据库user_info中添加字段new_message_number
 
+后台通知前台更新消息框时，须附带更新内容
+当收到新消息提醒时，前端需要更具不同的情况进行不同区域的刷新
+1、message_widget未显示时调用loadMessageWidget()
+2、message_widget显示时
+    a、active用户为消息发送方调用insertMessage()
+    b、active用户不为消息发送方调用loadMessageFriendList()
 
+点击用户列表中的发送消息通过ajax后执行loadMessageWidget()
+在widget中点击的active friendlist通过ajax
+
+cursor.execute("UPDATE user SET login_state=1,state=1 WHERE user_id=%s",str(row['user_id']))
+
+ userId = self.get_secure_cookie("userId").decode("utf-8")
+        self.clear_cookie('userId')
+        returnJson={"status":"00"}
+        self.write(json.dumps(returnJson, ensure_ascii=False))
+        cursor.execute("UPDATE user SET login_state=0,state=0 WHERE user_id=%s",userId)
+        logging.info("cookie清除成功！")
