@@ -27,11 +27,10 @@ function insertMessage(insertType,Content){
 点击用户列表中的发送消息通过ajax后执行loadMessageWidget()
 在widget中点击的active friendlist通过ajax
 
-cursor.execute("UPDATE user SET login_state=1,state=1 WHERE user_id=%s",str(row['user_id']))
-
- userId = self.get_secure_cookie("userId").decode("utf-8")
-        self.clear_cookie('userId')
-        returnJson={"status":"00"}
-        self.write(json.dumps(returnJson, ensure_ascii=False))
-        cursor.execute("UPDATE user SET login_state=0,state=0 WHERE user_id=%s",userId)
-        logging.info("cookie清除成功！")
+消息列表接受到新消息情况解析
+1、消息列表关闭的情况下
+    调用loadMessageWidget方法
+2、消息列表打开的情况下
+    a、active对象为消息发送方，insert方法插入消息
+    b、active对象不为消息发送方，刷新messageFriendList 刷新bubble
+    
