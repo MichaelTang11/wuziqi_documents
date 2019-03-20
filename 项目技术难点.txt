@@ -13,10 +13,8 @@
     侧边导航栏使用ace_scroll实现滚动条效果
     使用jqueryUi中的menu（jquery ui 的menu不支持动态元素更新）以及js代码实现点击弹出菜单的效果
     模仿qq游戏大厅ui设计
-    js批量生成html代码
     对话框滚动条初始在底部使用slimScroll
     对话框打开时将滚动条滚动到底部
-    对话框时间戳效果
     对话框中对话好友全部删完对话框隐藏，且对话框中聊天内弄变为新建聊天（判断何时为对话好友全部删除，以及内容的转变，hide（）show（）等）
     如何添加备注
     好友列表添加分类，修改分类名，新增分类
@@ -36,6 +34,9 @@
 14、获取iframe框中的表单值
 15、Navicat 连接远程数据库
 16、html转义
-17、js判断浏览器是刷新还是关闭
+17、js判断浏览器是刷新还是关闭（还有无法删除cookies的问题）
 18、webNotification通知用户新消息
 19、本地测试时解决跨域请求
+20、开发工具使用（webstorm pycharm git github xshell,vscode）
+21、http升级为https 开启端口443 nginx配置 证书安装 ssl证书申请
+22、mysql autocommit

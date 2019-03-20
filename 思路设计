@@ -33,4 +33,71 @@ function insertMessage(insertType,Content){
 2、消息列表打开的情况下
     a、active对象为消息发送方，insert方法插入消息
     b、active对象不为消息发送方，刷新messageFriendList 刷新bubble
-    
+
+判断页面是否刷新实现原理
+1、火狐只有在关闭页面时才会触发onbeforeunload事件
+2、chorme再刷新和关闭页面时都会触发onbeforeunload和onunload事件 
+    页面刷新时，刷新之前执行onbeforeunload事件，在新页面即将替换旧页面时onunload事件，最后onload事件
+    页面关闭时，先onbeforeunload事件，再onunload事件
+    由于刷新时onbeforeunload与onunload事件之间间隔时间较长所以可以更具次特性来判断浏览器是否为刷新
+
+getGameRoomData
+当玩家sitDown时会在前端cookies中设置桌号，当页面加载时后端自动获取前端中的cookies值
+
+gameRoomData
+{
+    "playerInfo": [
+        {
+            "position": "left",
+            "userId": "1",
+            "username": "test",
+            "avatar": "",
+            "sex": "",
+            "birthday": "",
+            "qq": "",
+            "gameTime": "",
+            "winTime": "",
+            "drawTime": ""
+        },
+        {
+            "position": "left",
+            "userId": "1",
+            "username": "test",
+            "avatar": "",
+            "sex": "",
+            "birthday": "",
+            "qq": "",
+            "gameTime": "",
+            "winTime": "",
+            "drawTime": ""
+        }
+    ]
+}
+
+SELECT
+	b.user_id AS left_user_id,
+	b.username AS left_username,
+	c.avatar AS left_avatar,
+	c.sex AS left_sex,
+	c.birthday AS left_birthday,
+	c.qq AS left_qq,
+	c.game_time AS left_game_time,
+	c.win_time AS left_win_time,
+	c.draw_time AS left_draw_time,
+	d.user_id AS right_user_id,
+	d.username AS right_username,
+	e.avatar AS right_avatar,
+	e.sex AS right_sex,
+	e.birthday AS right_birthday,
+	e.qq AS right_qq,
+	e.game_time AS right_game_time,
+	e.win_time AS right_win_time,
+	e.draw_time AS right_draw_time
+FROM
+	game_table_info AS a
+LEFT JOIN `user` AS b ON a.left_player_id = b.user_id
+LEFT JOIN user_info AS c ON b.user_id = c.user_id
+LEFT JOIN `user` AS d ON a.right_player_id=d.user_id
+LEFT JOIN user_info AS e ON d.user_id=e.user_id
+WHERE
+	table_id = 5

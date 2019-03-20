@@ -13,6 +13,7 @@
     sex             int	1           性别，0为男，1为女
     game_time       int	11          游戏次数，默认为0
     win_time        int 11          胜利次数，默认为0
+    draw_time       int 11          平局次数，默认为0
     qq              varchar20       qq号
     birthday        varchar20       生日
     register_date   varchar20       注册日期
