@@ -251,7 +251,7 @@ Home页面接口
     参数:
         position,tableId
     出参：
-       {'status':00} 00:成功
+       {'status':00} 00:成功并新建GameRoom页面 01:已在游戏状态中无法换桌 02:成功，后台通知GameRoom页面刷新
     功能:
         大厅中坐下，并新建GameRoom页面
 
