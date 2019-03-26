@@ -101,3 +101,47 @@ LEFT JOIN `user` AS d ON a.right_player_id=d.user_id
 LEFT JOIN user_info AS e ON d.user_id=e.user_id
 WHERE
 	table_id = 5
+
+进入游戏后连接GameRoom WebSocket
+GameRoomWebSocket的OnOpen中如对应的roomId的SocketCache中不为空，则需遍历通知刷新GameRoom界面
+GameRoomSocketCache结构
+{
+    "1": {
+        "3": {
+            "webSocket": "self",
+            "readyState": false,
+            "chessColor": "",
+            "winTime": 0,
+            "chessTime": "",
+            "yourTurn": false
+        },
+        "6": {
+            "webSocket": "self",
+            "readyState": false,
+            "chessColor": "",
+            "winTime": 0,
+            "chessTime": "",
+            "yourTurn": false
+        },
+        "gameTime": "00:00",
+        "stepRecord": [
+            {
+                "playerId": "1",
+                "chessType": "black",
+                "point": [
+                    0,
+                    3
+                ]
+            },
+            {
+                "playerId": "1",
+                "chessType": "black",
+                "point": [
+                    0,
+                    3
+                ]
+            }
+        ]
+    }
+}
+每局结束提醒前端是否需要保存对局，结束后清空stepRecord
