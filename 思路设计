@@ -33,4 +33,44 @@ function insertMessage(insertType,Content){
 2、消息列表打开的情况下
     a、active对象为消息发送方，insert方法插入消息
     b、active对象不为消息发送方，刷新messageFriendList 刷新bubble
-    
+GameRoomData中有字段tableState 若为初始状态则不更新棋盘信息，若为游戏状态，则根据后台棋盘信息加载棋盘
+
+进入游戏后连接GameRoom WebSocket
+GameRoomWebSocket的OnOpen中如对应的roomId的SocketCache中不为空，则需遍历通知刷新GameRoom界面
+GameRoomSocketCache结构
+{
+    "1":{
+            "3":{
+                    "webSocket":self,
+                    "readyState":false,
+                    "chessColor":"",
+                    "winTime":0,
+                    "chessTime":"",
+                    "yourTurn":false
+                },
+            "6":{
+                    "webSocket":self,
+                    "readyState":false,
+                    "chessColor":"",
+                    "winTime":0,
+                    "chessTime":"",
+                    "yourTurn":false
+                },
+            "gameTime":"00:00"
+            "stepRecord":[
+                            {
+                                "playerId":"1",
+                                "chessType":"black",
+                                "point":[0,3]
+                            },
+                            {
+                                "playerId":"1",
+                                "chessType":"black",
+                                "point":[0,3]
+                            }
+                         ]
+        }
+}
+每局结束提醒前端是否需要保存对局，结束后清空stepRecord
+
+
